@@ -16,6 +16,11 @@ jobs:
 
       - name: criando arquivo
         run: echo "ola mundo" > criando-token.txt
+      
+      - name: configurando o git
+        run: |
+            git config --global user.name "github actions"
+            git config --global user.email "githubactions@github.com"
 
       - name: comitando arquivo
         run: |
