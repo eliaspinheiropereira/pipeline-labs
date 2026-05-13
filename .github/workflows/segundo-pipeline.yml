@@ -1,0 +1,36 @@
+name: Meu Primeiro WorkFlow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  hello-job:
+    name: Criando meu primeiro job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do codigo
+        uses: actions/checkout@v4
+
+      - name: Exibindo mensagem de Hello World
+        run: echo "hello github actions"
+
+      - name: Mostrar informações do sistema
+        run: |
+          echo " == Informações do Sistema == "
+          echo "Sistema Operacional: ${{ runner.os }}"
+          echo "Diretorio: $(pwd)"
+          echo "Data: $(date +'%d/%m/%Y %H:%M')"
+          echo "Usuario: $(whoami)"
+
+      - name: Listar arquivos do repositório
+        run: ls -la
+
+      - name: Comandos multiplos
+        run: |
+          echo "Lab1 do curso de GitHub Actions"
+          echo "workflow executado com sucesso"
+          echo "pronto para os proximos desafios"
