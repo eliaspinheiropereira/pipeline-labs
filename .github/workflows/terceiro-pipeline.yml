@@ -20,6 +20,9 @@ jobs:
       - name: Executando testes
         run: echo "Testes executados com sucesso OK"
 
+      - name: Mostrando o SO usado
+        run: echo "sistema ${{ runner.os }}"
+
   build:
     name: Job de build
     needs: [init, testes]
