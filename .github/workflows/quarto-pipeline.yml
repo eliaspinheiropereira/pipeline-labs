@@ -1,0 +1,26 @@
+name: Usando o token do github
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  escrevendo-arquivos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout do codigo
+        uses: actions/checkout@v3
+
+      - name: criando arquivo
+        run: echo "ola mundo" > criando-token.txt
+
+      - name: comitando arquivo
+        run: |
+            git add .
+            git commit -m "adicionando arquivo criado pelo github actions"
+    
+      - name: enviando arquivo para o github
+        run: git push
