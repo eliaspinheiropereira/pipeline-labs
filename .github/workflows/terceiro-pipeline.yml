@@ -1,0 +1,34 @@
+name: Jobs Sequenciais
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  init:
+    name: Job de inicialização
+    runs-on: ubuntu-latest
+    steps:
+        - name: Iniciando servidor
+        run: echo "Sistema iniciado com sucesso OK"
+  testes:
+    name: Job de testes
+    runs-on: windows-latest
+    steps:
+        - name: Executando testes
+        run: echo "Testes executados com sucesso OK"
+  build:
+    name: Job de build
+    needs: [init, testes]
+    runs-on: ubuntu-latest
+    steps:
+        - name: Executando build
+        run: echo "Build executado com sucesso OK"
+  deploy:
+    name: Job de deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+        - name: Executando deploy
+        run: echo "Deploy executado com sucesso OK"
